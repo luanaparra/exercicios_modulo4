@@ -201,6 +201,19 @@ int main(){
 // ----------------------------------------------------------
 
 // 5 - Faça uma função que pergunta ao usuário se ele deseja continuar o mapeamento e retorna verdadeiro ou falso
+bool continuar(){
+  int parar;
+  cout<<"Digite 1 para parar ou 0 para continuar: ";
+  cin>>parar;
+  if(parar==1){
+    return(true);
+  }
+  else{
+    return(false);
+  }
+}
+/*
+outro jeito de fazer 
 int continuar(){
   bool opcao;
   int valor;
@@ -212,6 +225,7 @@ int continuar(){
     return 0;
   }
 }
+*/
 /*
 // Descomente a função main abaixo para testar o exercício 5
 int main(){
@@ -284,4 +298,46 @@ int main() {
   cout<<"]"<<endl;
   return 0;
 }
-//não entendi 
+
+/*
+jeito certo
+int dirige(int *v,int maxv){
+	int maxVetor = maxv;
+	int *vetorMov = v;
+	int posAtualVetor = 0;
+	int dirigindo = 1;		
+	while(dirigindo){		
+		int medida = /// .. Chame a função de de leitura da medida para a "Direita"
+		medida = converteSensor(medida,0,830);
+		posAtualVetor = // Chame a função para armazenar a medida no vetor
+    ///////////////////////////////////////////////////////////////////////////		
+		// Repita as chamadas acima para a "Esquerda", "Frente", "Tras"
+		// ................
+		///////////////////////////////////////////////////////////////////////////
+		dirigindo = leComando();		
+	}
+	return posAtualVetor;
+}
+// O trecho abaixo irá utilizar as funções acima para ler os sensores e o movimento
+// do robô e no final percorrer o vetor e mostrar o movimento a cada direção baseado 
+// na maior distância a cada movimento
+void percorre(int *v,int tamPercorrido){		
+	int *vetorMov = v;
+	int maiorDir = 0;
+	
+	for(int i = 0; i< tamPercorrido; i+=4){
+		char *direcao = direcaoMenorCaminho(&(vetorMov[i]),&maiorDir);
+		printf("Movimentando para %s distancia = %i\n",direcao,maiorDir);
+	}
+}
+int main(int argc, char** argv) {
+	int maxVetor = 100;
+	int vetorMov[maxVetor*4];
+	int posAtualVet = 0;
+	
+	posAtualVet = dirige(vetorMov,maxVetor);
+	percorre(vetorMov,posAtualVet);
+	
+	return 0;
+}
+*/
